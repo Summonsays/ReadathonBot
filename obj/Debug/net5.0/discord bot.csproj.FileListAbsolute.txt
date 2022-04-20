@@ -1,0 +1,16 @@
+E:\discord bot\bin\Debug\net5.0\discord bot.exe
+E:\discord bot\bin\Debug\net5.0\discord bot.deps.json
+E:\discord bot\bin\Debug\net5.0\discord bot.runtimeconfig.json
+E:\discord bot\bin\Debug\net5.0\discord bot.runtimeconfig.dev.json
+E:\discord bot\bin\Debug\net5.0\discord bot.dll
+E:\discord bot\bin\Debug\net5.0\ref\discord bot.dll
+E:\discord bot\bin\Debug\net5.0\discord bot.pdb
+E:\discord bot\obj\Debug\net5.0\discord bot.csproj.AssemblyReference.cache
+E:\discord bot\obj\Debug\net5.0\discord bot.GeneratedMSBuildEditorConfig.editorconfig
+E:\discord bot\obj\Debug\net5.0\discord bot.AssemblyInfoInputs.cache
+E:\discord bot\obj\Debug\net5.0\discord bot.AssemblyInfo.cs
+E:\discord bot\obj\Debug\net5.0\discord bot.csproj.CoreCompileInputs.cache
+E:\discord bot\obj\Debug\net5.0\discord bot.dll
+E:\discord bot\obj\Debug\net5.0\ref\discord bot.dll
+E:\discord bot\obj\Debug\net5.0\discord bot.pdb
+E:\discord bot\obj\Debug\net5.0\discord bot.genruntimeconfig.cache
