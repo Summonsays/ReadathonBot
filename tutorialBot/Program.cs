@@ -47,16 +47,19 @@ namespace tutorialBot
         private async Task HandleCommandsAsync(SocketMessage arg)
         {
             var message = arg as SocketUserMessage;
-            var context = new SocketCommandContext(_client, message);
-            if (message.Author.IsBot) return;
-
-            int argPos = 0;
-            if (message.HasStringPrefix("!", ref argPos))
+            if(message!= null)
             {
-                Console.WriteLine(arg.Content);
-                var result = await _commands.ExecuteAsync(context, argPos, _services);
-                if (!result.IsSuccess) Console.WriteLine(result.ErrorReason);
+                var context = new SocketCommandContext(_client, message);
+                if (message.Author.IsBot) return;
+
+                int argPos = 0;
+                if (message.HasStringPrefix("!", ref argPos))
+                {
+                    Console.WriteLine(arg.Content);
+                    var result = await _commands.ExecuteAsync(context, argPos, _services);
+                    if (!result.IsSuccess) Console.WriteLine(result.ErrorReason);
                 
+                }
             }
         }
     }
