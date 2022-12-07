@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Discord.Commands;
+using Discord;
 using System.Diagnostics;
 
-namespace tutorialBot.modules
+namespace readAThonBot.modules
 {
     public class Commands : ModuleBase<SocketCommandContext>
     {
 
         private static Stopwatch stopWatch = new Stopwatch();
         private static Stopwatch sprintTime = new Stopwatch();
-        private tutorialBot.modules.DataBase DB = new DataBase();
+        private readAThonBot.modules.DataBase DB = new DataBase();
         private static commandRegistry allCommands = new commandRegistry();
         private static int howMad = 0;
         //in minutes
@@ -23,7 +24,9 @@ namespace tutorialBot.modules
 
         public static void Start()
         {
+            //starting the timer for how long bot has been running.
             stopWatch.Start();
+            //populating the help command messages. Would love to figure out how to do this systemically.
             CustomCommand temp = new CustomCommand();
             temp = new CustomCommand("addBook", "Enter a book you've read");
             allCommands.register(temp);
@@ -155,7 +158,25 @@ namespace tutorialBot.modules
             await ReplyAsync(input);
         }
 
+        [Command("tJoin")]
+        //only used for debugging. Will be disabled/removed going forward
+        //trying to figure out how to throw a user joined event
+        public async Task tJoin()
+        {
+            var channels = this.Context.Guild.Channels;//.find(channel => channel.name === 'Name of the channel');
+            foreach(var channel in channels)
+            {
+                if (channel.Name.IndexOf("rules") > -1)
+                {
+                    await ((IUser)this.Context.User).SendMessageAsync("welcome: " + this.Context.User.Username + " Please read  <#" + channel.Id + ">");// "<#CHANNELID>);
+                }
+            }
+            
+            //this.Context.Client.UserJoined((Discord.WebSocket.SocketGuildUser)Context.User);
+        }
+
         [Command("t")]
+        //only used for debugging. Will be disabled/removed going forward
         public async Task t()
         {
             await ReplyAsync(this.Context.User.Username + " has read " + DB.getPages(this.Context.User.Username) + " pages");

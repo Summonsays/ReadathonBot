@@ -6,7 +6,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace tutorialBot
+namespace readAThonBot
 {
     public class Program
     {
@@ -23,7 +23,7 @@ namespace tutorialBot
 
             string token = ConfigurationManager.ConnectionStrings["discordToken"].ConnectionString;
 
-            tutorialBot.modules.Commands.Start();
+            readAThonBot.modules.Commands.Start();
 
             _client.Log += _client_Log;
             await RegisterCommandsAsync();
@@ -41,9 +41,24 @@ namespace tutorialBot
         public async Task RegisterCommandsAsync()
         {
             _client.MessageReceived += HandleCommandsAsync;
+            _client.UserJoined += AnnounceJoinedUser;
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
         }
 
+        private async Task AnnounceJoinedUser(SocketGuildUser user)
+        {
+            //var channel = _client.GetChannel(/*/TextChannelID/*/) as SocketTextChannel; // Gets the channel to send the message in
+            //await channel.SendMessageAsync($"Welcome {user.mention} to {channel.Guild.Name}"); //Welcomes the new user
+           /* var channels = this.Context.Guild.Channels;//.find(channel => channel.name === 'Name of the channel');
+            foreach (var channel in channels)
+            {
+                if (channel.Name.IndexOf("rules") > -1)
+                {
+                    await ((IUser)this.Context.User).SendMessageAsync("welcome: " + this.Context.User.Username + " Please read  <#" + channel.Id + ">");// "<#CHANNELID>);
+                }
+            }*/
+            user.SendMessageAsync("welcome: " + user.DisplayName);            
+        }
         private async Task HandleCommandsAsync(SocketMessage arg)
         {
             var message = arg as SocketUserMessage;

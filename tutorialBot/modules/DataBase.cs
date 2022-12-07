@@ -10,7 +10,7 @@ using Npgsql;
 using System.Configuration;
 
 
-namespace tutorialBot.modules
+namespace readAThonBot.modules
 {
     internal class DataBase
     {
